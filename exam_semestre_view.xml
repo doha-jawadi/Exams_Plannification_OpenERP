@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<menuitem id="main_menu_semestre" name="Planning Exam"/> 
+		<record id="exam_semestre_form_view" model="ir.ui.view">
+			<field name="name">exam.semestre.form</field>
+			<field name="model">exam.semestre</field>
+			<field name="arch" type="xml">
+				<form string="semestre" version="7.0">
+					<sheet>
+						<notebook >
+							<page string="Informations Semestre">
+								<group>
+									<field name="name"/>
+								</group>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="exam_semestre_tree">
+			<field name="name">exam.semestre.tree</field>
+			<field name="model">exam.semestre</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Informations Semestre">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+	</data>
+</openerp>

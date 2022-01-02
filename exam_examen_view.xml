@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<menuitem id="main_menu_examen" name="Exam Planning"/> 
+		<record id="exam_examen_form_view" model="ir.ui.view">
+			<field name="name">exam.examen.element_id</field>
+			<field name="model">exam.examen</field>
+			<field name="arch" type="xml">
+				<form string="examen" version="7.0">
+					<header>
+						<field name="state" widget="statusbar" statusbar_visible="" />
+						<button name='present' string='En Cours' states='futur' class='oe_highlight' type='workflow'/>
+						<button name='past' string='Examen Fini' states='present' class='oe_highlight' type='workflow'/>
+					</header>
+					<sheet>
+						<notebook >
+							<page string="Informations Examen">
+								<group>
+									<field name="name"/>
+									<field name="filliere_id"/>
+									<field name="module_id"/>
+									<field name="element_id"/>
+									<field name="semestre_id"/>
+									<field name="session_id"/>
+									<field name="surveillant_id"/>
+									<field name="date"/>
+									<field name="heure_debut"/>
+									<field name="duree"/>
+									<field name="salle_id"/>
+									<field name="anneeuniv_id"/>
+								</group>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="exam_examen_tree">
+			<field name="name">exam.examen.tree</field>
+			<field name="model">exam.examen</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Informations Examen">
+					<field name="name"/>
+					<field name="filliere_id"/>
+					<field name="module_id"/>
+					<field name="element_id"/>
+					<field name="semestre_id"/>
+					<field name="session_id"/>
+					<field name="surveillant_id"/>
+					<field name="date"/>
+					<field name="heure_debut"/>
+					<field name="duree"/>
+					<field name="salle_id"/>
+					<field name="anneeuniv_id"/>
+				</tree>
+			</field>
+		</record>
+		<record id="exam_examen_graph" model="ir.ui.view">
+			<field name="name">exam.examen.graph</field>
+			<field name="model">exam.examen</field>
+			<field name="arch" type="xml">
+				<graph string="Statistique des examens" type="bar">
+					<field name="filliere_id"/>
+					<field name="duree" operator="+"/>
+				</graph>
+			</field>
+		</record>
+		 <record id="exam_examen_calendar" model="ir.ui.view">
+            <field name="name">exam.examen.calendar</field>
+            <field name="model">exam.examen</field>
+            <field name="arch" type="xml">
+				<calendar color="filliere_id" date_delay="duree"  date_start="date" string="Exams" mode="week">
+					<field name="filliere_id"/>
+					<field name="date"/>
+				</calendar>
+            </field>
+        </record>
+		<record id="exam_examen_gantt" model="ir.ui.view">
+            <field name="name">exam.examen.gantt</field>
+            <field name="model">exam.examen</field>
+            <field name="arch" type="xml">
+				<gantt string="Exams" date_delay="duree" date_start="date" color="filliere_id">
+					<field name="filliere_id"/>
+					<field name="date"/>
+				</gantt>
+            </field>
+        </record>
+		<record model="ir.actions.act_window" id="action_examen_seq">
+			<field name="name">Examens</field>
+			<field name="res_model">exam.examen</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,graph,calendar,gantt</field>
+		</record>
+		<record model="ir.ui.view"  id="exam_examen_search_view" >
+            <field name="name">exam.examen.search</field>
+            <field name="model">exam.examen</field>
+            <field name="arch" type="xml">
+				<search string="Search Orders">
+					<filter string="Futur Examens" domain="[('state','=','futur')]"/>
+					<filter string="Examens en Cours" domain="[('state','=','present')]"/>
+					<filter string="Examens Passes" domain="[('state','=','past')]"/>
+					<separator orientation="horizontal"/>
+					<filter string="Session" domain="[]" context="{'group_by':'session_id'}"/>
+					<filter string="Filiere" domain="[]" context="{'group_by':'filliere_id'}"/>
+					<filter string="Salle" domain="[]" context="{'group_by':'salle_id'}"/>
+					<filter string="Date" domain="[]" context="{'group_by':'date'}"/>
+				</search>
+            </field>
+        </record>
+		<menuitem name="Examen" id="section_main_menu_examen" parent="main_menu_exam" />
+		<menuitem name="Gestion Examen" id="real_menu_examen" parent="section_main_menu_examen" action="action_examen_seq"/>
+		<menuitem name="Surveillant" id="real_menu_surveillant" parent="section_main_menu_examen" action="action_surveillant_seq"/>
+		<menuitem name="Etudiant" id="real_menu_etudiant" parent="section_main_menu_examen" action="action_etudiant_seq"/>
+	</data>
+</openerp>

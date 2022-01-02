@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<menuitem id="main_menu_session" name="Planning Exam"/> 
+		<record id="exam_session_form_view" model="ir.ui.view">
+			<field name="name">exam.session.form</field>
+			<field name="model">exam.session</field>
+			<field name="arch" type="xml">
+				<form string="session" version="7.0">
+					<sheet>
+						<notebook >
+							<page string="Informations Session">
+								<group>
+									<field name="name"/>
+								</group>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="exam_session_tree">
+			<field name="name">exam.session.tree</field>
+			<field name="model">exam.session</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Informations Session">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="action_session_seq">
+			<field name="name">Sessions</field>
+			<field name="res_model">exam.session</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+	</data>
+</openerp>

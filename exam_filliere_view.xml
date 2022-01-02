@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<menuitem id="main_menu_filliere" name="Planning Exam"/> 
+		<record id="exam_filliere_form_view" model="ir.ui.view">
+			<field name="name">exam.filliere.form</field>
+			<field name="model">exam.filliere</field>
+			<field name="arch" type="xml">
+				<form string="filliere" version="7.0">
+					<sheet>
+						<notebook >
+							<page string="Informations filliere">
+								<group>
+									<field name="name"/>
+									<field name="module_id"/>
+								</group>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="exam_filliere_tree">
+			<field name="name">exam.filliere.tree</field>
+			<field name="model">exam.filliere</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Informations filliere">
+					<field name="name"/>
+					<field name="module_id"/>
+				</tree>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="action_filliere_seq">
+			<field name="name">Fillieres</field>
+			<field name="res_model">exam.filliere</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		<menuitem name="Configuration Filliere" id="section_main_menu_filliere" parent="main_menu_exam" />	
+		<menuitem name="Filliere" id="real_menu_filliere" parent="section_main_menu_filliere" action="action_filliere_seq"/>
+		<menuitem name="Module" id="real_menu_module" parent="section_main_menu_filliere" action="action_module_seq"/>
+		<menuitem name="Element" id="real_menu_element" parent="section_main_menu_filliere" action="action_element_seq"/>
+	</data>
+</openerp>

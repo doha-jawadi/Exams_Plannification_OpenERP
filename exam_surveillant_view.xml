@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<menuitem id="main_menu_surveillant" name="Planning Exam"/> 
+		<record id="exam_surveillant_form_view" model="ir.ui.view">
+			<field name="name">exam.surveillant.form</field>
+			<field name="model">exam.surveillant</field>
+			<field name="arch" type="xml">
+				<form string="surveillant" version="7.0">
+					<sheet>
+						<notebook >
+							<page string="Informations surveillant">
+								<group>
+									<field name="name"/>
+									<field name="prenom"/>
+									<field name="salle"/>
+									<field name="date"/>
+									<field name="heure_debut"/>
+									<field name="duree"/>
+								</group>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="exam_surveillant_tree">
+			<field name="name">exam.surveillant.tree</field>
+			<field name="model">exam.surveillant</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Informations surveillant">
+					<field name="name"/>
+					<field name="prenom"/>
+					<field name="salle"/>
+					<field name="date"/>
+					<field name="heure_debut"/>
+					<field name="duree"/>
+				</tree>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="action_surveillant_seq">
+			<field name="name">Surveillants</field>
+			<field name="res_model">exam.surveillant</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+	</data>
+</openerp>

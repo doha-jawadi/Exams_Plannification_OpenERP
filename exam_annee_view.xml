@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<menuitem id="main_menu_annee" name="Planning Exam"/> 
+		<record id="exam_annee_form_view" model="ir.ui.view">
+			<field name="name">exam.annee.form</field>
+			<field name="model">exam.annee</field>
+			<field name="arch" type="xml">
+				<form string="annee" version="7.0">
+					<sheet>
+						<notebook >
+							<page string="Informations Annee Univeristaire">
+								<group>
+									<field name="name"/>
+								</group>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="exam_annee_tree">
+			<field name="name">exam.annee.tree</field>
+			<field name="model">exam.annee</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Informations Annee Univeristaire">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="action_annee_seq">
+			<field name="name">Annees Universitaires</field>
+			<field name="res_model">exam.annee</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+	</data>
+</openerp>

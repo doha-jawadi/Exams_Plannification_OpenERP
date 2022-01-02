@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<menuitem id="main_menu_exam" name="Planning Exam"/> 
+		<record id="exam_type_form_view" model="ir.ui.view">
+			<field name="name">exam.type.form</field>
+			<field name="model">exam.type</field>
+			<field name="arch" type="xml">
+				<form string="type" version="7.0">
+					<sheet>
+						<notebook >
+							<page string="Type Local">
+								<group>
+									<field name="name"/>
+								</group>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="exam_type_tree">
+			<field name="name">exam.type.tree</field>
+			<field name="model">exam.type</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Type Local">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="action_type_seq">
+			<field name="name">Type Locales</field>
+			<field name="res_model">exam.type</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		<menuitem name="Configuration" id="section_main_menu_etudiant" parent="main_menu_exam" />
+		<menuitem name="Type" id="real_menu_type" parent="section_main_menu_etudiant" action="action_type_seq"/>
+	</data>
+</openerp>

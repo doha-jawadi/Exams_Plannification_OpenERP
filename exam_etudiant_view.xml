@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<menuitem id="main_menu_exam" name="Planning Exam"/> 
+		<record id="exam_etudiant_form_view" model="ir.ui.view">
+			<field name="name">exam.etudiant.form</field>
+			<field name="model">exam.etudiant</field>
+			<field name="arch" type="xml">
+				<form string="etudiant" version="7.0">
+					<sheet>
+						<notebook >
+							<page string="Informations Etudiant">
+								<group>
+									<field name="name"/>
+									<field name="prenom"/>
+									<field name="filliere_id"/>
+									<field name="semestre_id"/>
+								</group>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="exam_etudiant_tree">
+			<field name="name">exam.etudiant.tree</field>
+			<field name="model">exam.etudiant</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Informations Etudiant">
+					<field name="name"/>
+					<field name="prenom"/>
+					<field name="filliere_id"/>
+					<field name="semestre_id"/>
+				</tree>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="action_etudiant_seq">
+			<field name="name">Etudiants</field>
+			<field name="res_model">exam.etudiant</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		<record model="ir.actions.act_window" id="action_semestre_seq">
+			<field name="name">Semestres</field>
+			<field name="res_model">exam.semestre</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		<menuitem name="Configuration" id="section_main_menu_etudiant" parent="main_menu_exam" />	
+		<menuitem name="Semestre" id="real_menu_semestre" parent="section_main_menu_etudiant" action="action_semestre_seq"/>
+		<menuitem name="Session" id="real_menu_session" parent="section_main_menu_etudiant" action="action_session_seq"/>	
+		<menuitem name="Annee Universitaire" id="real_menu_annee" parent="section_main_menu_etudiant" action="action_annee_seq"/>
+	</data>
+</openerp>
